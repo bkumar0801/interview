@@ -14,8 +14,15 @@ Output: "10101"
 */
 
 func addBinary(a string, b string) string {
-    
-    result := "" 
+    sz := 0
+    if len(a) < len(b) {
+        sz = len(b)
+    } else {
+        sz = len(a)
+    }
+    result := make ([]rune, sz + 1)
+    idx := sz
+
     op := 0 
   
     aIdx := len(a) - 1
@@ -32,13 +39,15 @@ func addBinary(a string, b string) string {
             
         op = op + 0
         
-        result = fmt.Sprintf("%c", op % 2 + '0') + result
-  
+        result[idx] = rune(op % 2 + '0')
+        
+        idx = idx - 1  
         // Compute carry 
         op = op/ 2
         
         aIdx = aIdx -1
         bIdx = bIdx -1
     } 
-    return result
+    return string(result)
+    
 }
