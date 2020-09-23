@@ -32,7 +32,7 @@ func addBinary(a string, b string) string {
             
         op = op + 0
         
-        result = fmt.Sprintf("%d", op % 2 + '0') + result
+        result = fmt.Sprintf("%c", op % 2 + '0') + result
   
         // Compute carry 
         op = op/ 2
