@@ -36,7 +36,11 @@ func validPalindrome(s string) bool {
     
     if len(s) % 2 == 0 {
         for i, _ := range s {
-            if isPalindrome(s[i+1:]) {
+            if i == 0 && isPalindrome(s[i+1:]) {
+                    return true
+            } else if i == len(s) - 1 && isPalindrome(s[0:i]){
+                 return true
+            } else if isPalindrome(s[0:i] + s[i+1:]) {
                 return true
             }
         }
